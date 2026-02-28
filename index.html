@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Sampath <3 </title>
+<title>Happy Birthday Sampath 🎂</title>
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 <style>
 body{
@@ -82,63 +82,63 @@ img{
 <div class="sticker" style="bottom:15%;right:12%">💗</div>
 <div class="title">Sampath’s Day ✨</div>
 <div class="card">
-<img src="pic1.jpg">
+<img src="pic1.webp">
 <div class="text">Birthday boy = cutest human alive. Science confirmed.</div>
 </div>
 </div>
 
 <div class="section" style="background:#e7d6ff">
 <div class="card">
-<img src="pic2.jpg">
+<img src="pic2.webp">
 <div class="text">You’re 90% smart, 10% chaos and 100% adorable.</div>
 </div>
 </div>
 
 <div class="section" style="background:#d6f0ff">
 <div class="card">
-<img src="pic3.jpg">
+<img src="pic3.webp">
 <div class="text">I smile like an idiot whenever I see you.</div>
 </div>
 </div>
 
 <div class="section" style="background:#ffeab6">
 <div class="card">
-<img src="pic4.jpg">
+<img src="pic4.webp">
 <div class="text">How do you manage to be cool AND cute?? Illegal honestly.</div>
 </div>
 </div>
 
 <div class="section" style="background:#ffd6e7">
 <div class="card">
-<img src="pic5.jpg">
+<img src="pic5.webp">
 <div class="text">If I had to pick a favorite person… it’d still be you.</div>
 </div>
 </div>
 
 <div class="section" style="background:#e7d6ff">
 <div class="card">
-<img src="pic6.jpg">
-<div class="text">You make even boring days feel boring only.</div>
+<img src="pic6.webp">
+<div class="text">You make even boring days feel fun somehow.</div>
 </div>
 </div>
 
 <div class="section" style="background:#d6f0ff">
 <div class="card">
-<img src="pic7.jpg">
+<img src="pic7.webp">
 <div class="text">Plot twist: you're actually my comfort person.</div>
 </div>
 </div>
 
 <div class="section" style="background:#ffeab6">
 <div class="card">
-<img src="pic8.jpg">
+<img src="pic8.webp">
 <div class="text">I’d choose you in every universe btw.</div>
 </div>
 </div>
 
 <div class="section" style="background:#ffd6e7">
 <div class="card">
-<img src="pic9.jpg">
+<img src="pic9.webp">
 <div class="text">You deserve happiness, peace, success… and cake.</div>
 </div>
 </div>
@@ -147,10 +147,106 @@ img{
 <div class="sticker" style="top:15%;right:10%">🎂</div>
 <div class="sticker" style="bottom:10%;left:12%">💞</div>
 <div class="card">
-<img src="pic10.jpg">
+<img src="pic10.webp">
 <div class="text">Happy Birthday Sampath 💗 I love you more than snacks.</div>
 </div>
 </div>
+
+<div id="loader">
+<div class="cake">🎂</div>
+<div class="loadtext">Loading Sampath's surprise...</div>
+</div>
+
+<style>
+#loader{
+position:fixed;
+inset:0;
+background:linear-gradient(135deg,#ffd6e7,#e7d6ff,#d6f0ff);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:9999;
+animation:fadeOut 1s ease 3s forwards;
+}
+
+.cake{
+font-size:70px;
+animation:bounce 1s infinite;
+}
+
+.loadtext{
+font-family:'Patrick Hand',cursive;
+font-size:1.8rem;
+margin-top:10px;
+color:#ff6fa5;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden}
+}
+</style>
+
+<canvas id="confetti"></canvas>
+
+<script>
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let pieces=[];
+for(let i=0;i<150;i++){
+pieces.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height-canvas.height,
+r:Math.random()*6+4,
+d:Math.random()*150,
+color:`hsl(${Math.random()*360},100%,75%)`,
+tilt:Math.random()*10-10
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+pieces.forEach(p=>{
+ctx.beginPath();
+ctx.fillStyle=p.color;
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2,false);
+ctx.fill();
+});
+update();
+}
+
+function update(){
+pieces.forEach(p=>{
+p.y+=Math.cos(p.d)+3;
+p.x+=Math.sin(p.d);
+if(p.y>canvas.height){
+p.y=-10;
+p.x=Math.random()*canvas.width;
+}
+});
+}
+
+setInterval(draw,20);
+setTimeout(()=>canvas.remove(),5000);
+</script>
+
+<style>
+#confetti{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+z-index:9998;
+}
+</style>
 
 </body>
 </html>
